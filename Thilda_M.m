@@ -216,6 +216,23 @@ for c =1:tend/dtout
 
     LL = LL+1/6*dt*( k1LL+2*k2LL+2*k3LL+k4LL );
     HL = HL+1/6*dt*( k1HL+2*k2HL+2*k3HL+k4HL );
+    
+%***************************************************************************%
+    % if t <= 2500*sy 
+    % LL = LL+1/6*dt*( k1LL+2*k2LL+2*k3LL+k4LL );
+    % else
+    % LL = LL+1/6*dt*( k1LL+2*k2LL+2*k3LL+k4LL );
+    % LL(3,:) = CP_crit_LL;
+    % end
+    % 
+    % if t <= 2500*sy 
+    % HL = HL+1/6*dt*( k1HL+2*k2HL+2*k3HL+k4HL );
+    % else
+    % HL = HL+1/6*dt*( k1HL+2*k2HL+2*k3HL+k4HL );
+    % HL(3,:) = CP_crit_HL;
+    % end
+%**************************************************************************%
+    
     AT = AT+1/6*dt*( k1AT+2*k2AT+2*k3AT+k4AT );
     LB = LB+1/6*dt*( k1LB+2*k2LB+2*k3LB+k4LB );
     
