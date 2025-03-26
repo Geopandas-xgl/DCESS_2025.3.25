@@ -1,4 +1,4 @@
-clear
+clear all
 % % function Evol_M
 global sy rcp n fdiv R13pdb rpm mgt methc13 mettc13 orgc13 lipc13 dm d n aHL aLL pOrgLL pOrgHL
 
@@ -22,8 +22,8 @@ data2 = readtable("data\Xiong-2025-PETM.xlsx","Sheet","U and Ba isotope");
 data3 = readtable("data\Xiong-2025-PETM.xlsx","Sheet","Anoxic area");
 color = readtable("data\Xiong-2025-PETM.xlsx","Sheet","Color");
 
-data.dC1 = data1.x_13C(1:end-3);
-data.age1 = data1.age_westerhold(1:end-3);
+data.dC1 = data1.x_13C;
+data.age1 = data1.age_westerhold+ 22.3;
 
 data.Ba = data2(1:end-3, ["Age_westerhold","x_138Ba","x2SD_1"]);
 data.Ba = data.Ba(~isnan(data.Ba.x_138Ba),:);
@@ -274,7 +274,7 @@ set(gca,"linewidth", 1,"FontSize",10,"FontName", "Times","TickLength",[0.02,0.03
 axes(ha(3*0+2))
 plt1 = plot(t_kyr,d13LL100md,"LineWidth",1.4); hold on
 plt2 = plot(t_kyr,d13LL5000md,"LineWidth",1.4);
-scatter(data.age1,data.dC1-mean(data.dC1(1:60)),7,"Marker","o","MarkerEdgeColor","#404040","MarkerFaceColor","#404040","LineWidth",0.01);
+scatter(data.age1,data.dC1-mean(data.dC1(1:44)),7,"Marker","o","MarkerEdgeColor","#404040","MarkerFaceColor","#404040","LineWidth",0.01);
 xlim([xmin,xmax]);
 xticks(xmin:xtick_inter:xmax);
 ylim([-7.5,3.5]);
@@ -425,7 +425,7 @@ k2 = 0; % varibility rate
 for i = 1:50:1000
 oxy_norm = ZLL(:,i)./(LL(8,:)'*1000); % Normalized dissolved oxygenation concentration  
 pOrgCLL_alt = exp(k2*(oxy_norm-1)).*pOrgCLL(:,i); % positive exponential function between organic carbon dissolution and dissolved oxygenation concentration 
-plot(pOrgCLL_alt,1:55); hold on
+plot(pOrgCLL_alt,1:55,"LineWidth",0.5); hold on
 end
 xlim([0,1]);
 xticks(0:0.2:1)
@@ -440,7 +440,7 @@ k2 = 0.5;
 for i = 1:50:1000
 oxy_norm = ZLL(:,i)./(LL(8,:)'*1000);
 pOrgCLL_alt = exp(k2*(oxy_norm-1)).*pOrgCLL(:,i);
-plot(pOrgCLL_alt,1:55); hold on
+plot(pOrgCLL_alt,1:55,"LineWidth",0.5); hold on
 end
 xlim([0,1])
 xticks(0:0.2:1)
@@ -455,7 +455,7 @@ k2 = 1;
 for i = 1:50:1000
 oxy_norm = ZLL(:,i)./(LL(8,:)'*1000);
 pOrgCLL_alt = exp(k2*(oxy_norm-1)).*pOrgCLL(:,i);
-plot(pOrgCLL_alt,1:55); hold on
+plot(pOrgCLL_alt,1:55,"LineWidth",0.5); hold on
 end
 xlim([0,1])
 xticks(0:0.2:1)
